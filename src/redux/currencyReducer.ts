@@ -44,36 +44,20 @@ export const currencyReducer = (state: CurrencyState = initialState, action: Cur
         case ACTIONS_TYPE.CHANGE_CURRENCY_FIELD_TYPE:
             return {
                 ...state,
-                ...action.payload
+                ...action.payload,
             }
-        case ACTIONS_TYPE.CHANGE_CHANGE_ACTION:
         case ACTIONS_TYPE.CHANGE_CURRENT_CURRENCY:
+        case ACTIONS_TYPE.CHANGE_CHANGE_ACTION:
             return {
                 ...state,
                 ...action.payload,
-                //Зануление инпута после смены кнопки
+                //Зануление при смене кнопки
                 amountOfBYN: '',
                 amountOfCurrency: '',
             }
         default:
             return state;
     }
-
-    // const dic = {
-    //     [ACTIONS_TYPE.CHANGE_CURRENT_CURRENCY]: (action) => {
-    //         return {
-    //             ...state,
-    //             ...action.payload,
-    //             // Зануляем поля при смене направления операции
-    //             amountOfBYN: '',
-    //             amountOfCurrency: '',
-    //         };
-    //     }
-    // };
-    // dic[action.type](action);
 };
 
-export const selectCurrencies = (state: IGlobalState) => state.currency.currencies;
-//export const selectItemById = (state:IGlobalState) => (id: string) => state.currency.currencies.find();
-//export const selectItemById = (state:IGlobalState) => state.currency.currencies(el => el.status === state.currency.status);
-export const selectAllCurrencyState = (state: IGlobalState) => state.currency;
+export const selectorCurrencyAll = (state:IGlobalState) => state.currency
